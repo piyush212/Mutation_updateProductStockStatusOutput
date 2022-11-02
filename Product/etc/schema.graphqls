@@ -1,0 +1,13 @@
+type Mutation {
+    updateProductStockStatus(
+        sku: String @doc(description:"Product SKU")
+        is_in_stock: Int @doc(description:"Stock Status: 1= In Stock, 0= Out of Stock")
+    ): updateProductStockStatusOutput
+    @resolver(class:"Piyush\\Product\\Model\\Resolver\\StockStatus")
+    @doc(description:"Update Stock Status")
+}
+
+type updateProductStockStatusOutput {
+    sku: String
+    result: Boolean
+}
